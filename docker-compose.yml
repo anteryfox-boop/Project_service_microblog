@@ -1,0 +1,6 @@
+services:
+  postgres_db:
+    image: postgres:15
+    container_name: test_fastapi_db
+    env_file:
+      -.env
