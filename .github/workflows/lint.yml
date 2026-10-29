@@ -21,24 +21,22 @@ jobs:
 
     - name: Install dependencies
       run: |
+        set -e
         python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
+        pip install flake8 mypy pytest black isort
 
-    # 1. Проверка форматирования (если код не отформатирован, будет ошибка)
     - name: Check formatting with black
       run: black --check app/ tests/
 
     - name: Check import sorting with isort
       run: isort --check-only app/ tests/
 
-    # 2. Проверка стиля (flake8)
     - name: Run flake8
       run: flake8 app/ tests/
 
-    # 3. Проверка типов (mypy)
     - name: Run mypy
       run: mypy app/ tests/
 
-    # 4. Запуск тестов (pytest)
     - name: Run tests
       run: pytest tests/ -v
