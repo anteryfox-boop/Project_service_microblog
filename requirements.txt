@@ -1,3 +1,8 @@
 SQLAlchemy==2.0.54
 fastapi==0.141.1
 uvicorn==0.53.0
+sqlalchemy[asyncio]
+python-dotenv== 1.2.4
+pydantic==2.14.1
+python-multipart==0.0.32
+asyncpg==0.32.0
