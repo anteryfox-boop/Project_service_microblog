@@ -1,0 +1,44 @@
+name: Linters & Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+
+    # 1. Проверка форматирования (если код не отформатирован, будет ошибка)
+    - name: Check formatting with black
+      run: black --check app/ tests/
+
+    - name: Check import sorting with isort
+      run: isort --check-only app/ tests/
+
+    # 2. Проверка стиля (flake8)
+    - name: Run flake8
+      run: flake8 app/ tests/
+
+    # 3. Проверка типов (mypy)
+    - name: Run mypy
+      run: mypy app/ tests/
+
+    # 4. Запуск тестов (pytest)
+    - name: Run tests
+      run: pytest tests/ -v
