@@ -24,18 +24,22 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
         pip install black==24.10.0 isort==5.13.2 flake8==7.1.1
-
+    # 1. Проверка форматирования (через python -m)
     - name: Check formatting with black
-      run: black --check app/ tests/
+      run: python -m black --check app/ tests/
 
+    # 2. Проверка импортов (через python -m)
     - name: Check import sorting with isort
-      run: isort --check-only app/ tests/
+      run: python -m isort --check-only app/ tests/
 
+    # 3. Проверка стиля (через python -m)
     - name: Run flake8
-      run: flake8 app/ tests/
+      run: python -m flake8 app/ tests/
 
+    # 4. Проверка типов (через python -m)
     - name: Run mypy
-      run: mypy app/ tests/
+      run: python -m mypy app/ tests/
 
+    # 5. Запуск тестов (через python -m)
     - name: Run tests
-      run: pytest tests/ -v
+      run: python -m pytest tests/ -v
