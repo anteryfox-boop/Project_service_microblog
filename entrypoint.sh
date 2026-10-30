@@ -2,7 +2,6 @@
 set -e
 
 echo "Waiting for PostgreSQL..."
-# Ждём, пока БД станет доступна
 while ! nc -z postgres_db 5432; do
   sleep 1
 done
