@@ -3,7 +3,7 @@ import asyncio
 from sqlalchemy import select
 
 from app.database import AsyncSessionLocal
-from app.models import Tweet, User, Media
+from app.models import Media, Tweet, User
 
 
 async def seed():
