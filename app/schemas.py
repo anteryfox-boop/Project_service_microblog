@@ -1,5 +1,11 @@
-from pydantic import (AliasChoices, BaseModel, ConfigDict, Field,
-                      field_validator, model_validator)
+from pydantic import (
+    AliasChoices,
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 
 class UserShort(BaseModel):

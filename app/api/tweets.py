@@ -6,9 +6,15 @@ from sqlalchemy.orm import selectinload
 from app.database import get_db
 from app.dependencies import get_current_user
 from app.models import Media, Tweet, User, likes_association
-from app.schemas import (ResultResponse, TweetAuthor, TweetCreate,
-                         TweetCreateResponse, TweetLike, TweetResponse,
-                         TweetsListResponse)
+from app.schemas import (
+    ResultResponse,
+    TweetAuthor,
+    TweetCreate,
+    TweetCreateResponse,
+    TweetLike,
+    TweetResponse,
+    TweetsListResponse,
+)
 
 router = APIRouter(prefix="/api/tweets", tags=["tweets"])
 

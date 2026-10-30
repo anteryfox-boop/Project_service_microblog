@@ -4,8 +4,7 @@ import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import delete
-from sqlalchemy.ext.asyncio import (AsyncSession, async_sessionmaker,
-                                    create_async_engine)
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.database import Base, get_db
 from app.main import app
@@ -60,8 +59,11 @@ async def create_user_user(async_client):
     yield
 
     async with TestingSessionLocal() as session:
-        from app.models import (followers_association, likes_association,
-                                tweet_media_association)
+        from app.models import (
+            followers_association,
+            likes_association,
+            tweet_media_association,
+        )
 
         await session.execute(delete(likes_association))
         await session.execute(delete(followers_association))

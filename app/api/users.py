@@ -60,7 +60,7 @@ async def follow_user(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
-    """ Подписка на пользователя по его user_id"""
+    """Подписка на пользователя по его user_id"""
     if current_user.id == user_id:
         raise HTTPException(status_code=400, detail=" You cannot follow yourself")
 

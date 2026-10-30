@@ -51,8 +51,7 @@ async def seed():
         await session.refresh(media1)
 
         tweet_with_media = Tweet(
-            content="Смотрите, какой классный котик!",
-            user_id=user3.id
+            content="Смотрите, какой классный котик!", user_id=user3.id
         )
         tweet_with_media.attachments.append(media1)
 
